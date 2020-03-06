@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static%}
+        {% block title %}
+        FERROPERU - Registar Producto   
+        {% endblock title %}
+        {% block estilos %}
+        <link rel="stylesheet" href="{% static 'css/estilos2.css' %}">
+        {% endblock estilos %}
+        {% block contenido %}
+        <h1>BIENVENIDO</h1>
+        <div class="container" style="padding-left:20px;">
+            <div class="row">
+            <a href="asd"><span class="badge badge-primary" style="margin:10px;padding:10px;" ><i class="fa fa-plus-square" > Nuevo Producto</i></span></a>
+            <a href="asd"><span class="badge badge-danger" style="margin:10px;padding:10px;"><i class="fa fa-file-pdf">  Imprimir Pdf</i></span> </a>
+            <a href="asd"><span class="badge badge-success" style="margin:10px;padding:10px;"><i class="fa fa-file-excel">  Exportar Excel</i></span></a> 
+            </div>
+                       <table id="table_id" class="table table-striped table-bordered" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Nombre Producto</th>
+                                    <th>Fecha Registro</th>
+                                    <th>Precio Venta</th>
+                                    <th>Cantidad</th>
+                                    <th>Imagen</th>
+                                    <th>Opciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for p in productos%}
+                                <tr>
+                                    <td>{{p.nombre}}</td>
+                                    <td>{{p.fecha_registro}}</td>
+                                    <td>{{p.precio_ven}}</td>
+                                    <td>{{p.stock}}</td>
+                                    {% if p.imagen %}
+                                    <td><img src="{{p.imagen.url}}" alt="{{p.nombre}}" style="width:40px;height:40px;"></td>
+                                    {% else%}
+                                    <td><img src="#">imagen</td>
+                                    {% endif%}
+                                    <td><a href="#"><span class="badge badge-success"><i class="fa fa-pen"></i></span></a>
+                                   <a href="#"><span class="badge badge-danger"><i class="fa fa-trash-alt"></i></span></a>
+                                    </td>
+                                    <!--<td><a href="{% url 'modificar_usuarios' p.id %}">Modificar</a></td>
+                                    <td><a href="#" onclick="confirmarElimninacion({{p.id}})">Eliminar</td>-->
+                                {% endfor%}
+                            </tbody>
+                             <tfoot>
+                            <tr>
+                                    <th>Nombre Producto</th>
+                                    <th>Fecha Registro</th>
+                                    <th>Precio Venta</th>
+                                    <th>Cantidad</th>
+                                    <th>Opciones</th>
+                            </tr>
+                         </tfoot>
+                        </table>
+         </div>
+        {% endblock contenido %}
+        {% block script %}
+        <script type="text/javascript">
+            $(document).ready( function () {
+            $('#table_id').DataTable();
+            } );
+        </script>
+        {% endblock script %}

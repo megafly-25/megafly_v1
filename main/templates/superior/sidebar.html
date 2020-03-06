@@ -1,0 +1,83 @@
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>imagen</h3>
+                <strong>FP</strong>
+            </div>
+
+            <ul class="list-unstyled components">
+            
+                    <!--<li>
+                    <a href="#">
+                        <i class="fas fa-home"></i>
+                        Administración
+                    </a></li>
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-briefcase"></i>
+                        Facturación
+                    </a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="#">Home 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 3</a>
+                        </li>
+                    </ul>
+                </li>-->
+                    <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-copy"></i>
+                        Ingresos
+                    </a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="{% url 'productos'%}">Productos</a>
+                        </li>
+                        <li>
+                            <a href="#">Servicios</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'register_product'%}">Registrar Producto</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'registrar_genero' %}">Añadir Genero</a>
+                        </li>
+                    </ul>
+                </li>
+                <!--<li>
+                    <a href="#">
+                        <i class="fas fa-image"></i>
+                        Recursos Humanos
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-question"></i>
+                        Reportes
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-paper-plane"></i>
+                        Seguridad
+                    </a>
+                </li>
+            </ul>-->
+
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="{% url 'principal'%}" class="download">Volver a Principal</a>
+                </li>
+                <!--<li>
+                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
+                </li>-->
+            </ul>
+        </nav>
+        
+        <!-- Page Content  -->
+        

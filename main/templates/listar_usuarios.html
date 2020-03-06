@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block script %}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="{% static 'js/confirmacion.js' %}"></script>
+{% endblock script %}
+{% block contenido %}
+    <table class="table">
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Edad</th>
+            <th>Opciones</th>
+        </tr>
+        {% for u in usuarios%}
+        <tr>
+            <td>{{u.nombre}}</td>
+            <td>{{u.apellido}}</td>
+            <td>{{u.edad}}</td>
+            <td><a href="{% url 'modificar_usuarios' u.id %}">Modificar</a></td>
+            <td><a href="#" onclick="confirmarElimninacion({{u.id}})">Eliminar</td>
+        </tr>
+        {% endfor%}
+    </table>
+{% endblock contenido %}

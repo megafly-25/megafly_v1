@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+        {% block title %}
+        {% load crispy_forms_tags%}
+        FERROPERU-Registrar Producto   
+        {% endblock title %}
+        {% block contenido %}
+        <div class="row justify-content-center mt-4">
+        <div class="col-10">
+        <div class="card">
+        <div class="card-body">
+        <h2>Registrar Juego</h2>
+        <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+        {{form|crispy}}
+        </table>
+        <input class="btn btn-primary" type="submit" value="REGISTRAR">
+        <input class="btn btn-success" type="reset" value="Limpiar"> 
+        {{mensaje}}        
+        </form>
+        </div>
+        </div>
+        </div>
+        </div>
+        {% endblock contenido %}
