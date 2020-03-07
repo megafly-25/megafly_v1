@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User,Group
 from main.models import mega_juego
 from django.contrib.auth import login,authenticate
 from django.core.paginator import Paginator
@@ -15,12 +15,12 @@ def index(request):
     if request.user.is_authenticated:
         group=request.user.groups.filter(user=request.user)[0]
         if group.name=="Administrador" or group.name=="Super_Administrador":
-            return HttpResponseRedirect('inicio')
+            return redirect('inicio')
         elif group.name=="Usuario":
-            return HttpResponseRedirect('principal')
+            return redirect('principal')
     else:
         return redirect('principal')
-    return render(request,"principal.html")   
+    return redirect('principal')   
         
 def principal(request):
     productos=mega_juego.objects.get_queryset().order_by('id')
@@ -49,6 +49,8 @@ def registrar(request):
                 username=form.cleaned_data['username']
                 password=form.cleaned_data['password1']
                 user=authenticate(username=username,password=password)
+                group = Group.objects.get(name='Usuario')
+                user.groups.add(group)
                 login(request,user)
                 return redirect('/')
         else:
