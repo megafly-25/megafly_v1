@@ -13,7 +13,7 @@
     {% for p in page_obj %}
     <div class="card" style="width: 12,5em;">
         {% if p.imagen %}
-        <a href="{% url 'juego' id=p.id%}"><img src="{{p.imagen.url}}" alt="{{p.nombre}}" style="width:200px;height:200px;"></td>
+        <a href="{% url 'juego' slug=p.slug%}"><img src="{{p.imagen.url}}" alt="{{p.nombre}}" style="width:200px;height:200px;"></td>
         <h6 class="card-title" style="position: absolute;top:180px;right:70px; text-align:center;color:#fff">{{p.nombre}}</h6></a>
         {% else%}
         <td><img src="#">imagen</td>

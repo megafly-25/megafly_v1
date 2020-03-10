@@ -15,25 +15,24 @@ def index(request):
     if request.user.is_authenticated:
         group=request.user.groups.filter(user=request.user)[0]
         if group.name=="Administrador" or group.name=="Super_Administrador":
-            return redirect('inicio')
+            return render(request,'inicio_admin.html')
         elif group.name=="Usuario":
-            return redirect('principal')
+            return render(request,'principal.html')
     else:
         return redirect('principal')
-    return redirect('principal')   
-        
+   
 def principal(request):
     productos=mega_juego.objects.get_queryset().order_by('id')
     paginator=Paginator(productos,30)
-    #data={
-    #    'productos':productos
-    #}
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    return render(request,"principal.html",{'page_obj': page_obj})
-def juego(request,id):
-    #productos=produc_fer.objects.get(id=id)
-    productos=get_object_or_404(mega_juego,id=id)
+    data={
+        'page_obj':page_obj
+    }
+    return render(request,"principal.html",data)
+def juego(request, slug):
+    #productos=produc_fer.objects.filter(slug=slug)
+    productos=get_object_or_404(mega_juego, slug=slug)
     data={
         'productos':productos
     }
