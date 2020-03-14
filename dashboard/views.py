@@ -5,12 +5,15 @@ from main.models import mega_juego
 from django.contrib.auth import login,authenticate
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required,permission_required 
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect,HttpResponse
 from django.views.defaults import page_not_found
+
 # Create your views here.
 def mi_error_404(request,exception):
     return page_not_found(request,exception,template_name="404.html")
-    
+
+def sitemap(request):
+        return render(request,"sitemap.xml",content_type="application/xhtml+xml")   
 def index(request):
     if request.user.is_authenticated:
         group=request.user.groups.filter(user=request.user)[0]

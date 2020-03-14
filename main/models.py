@@ -1,8 +1,10 @@
+from datetime import date, datetime
+
 from django.db import models
-from django_matplotlib import MatplotlibFigureField
-from datetime import datetime,date
-from django.utils.text import slugify
 from django.db.models.signals import pre_save
+from django.utils.text import slugify
+from django_matplotlib import MatplotlibFigureField
+from django.urls import reverse
 # Create your models here.
 class User(models.Model):
     nombre=models.CharField(max_length=100)
@@ -43,8 +45,8 @@ class mega_juego(models.Model):
         enlace_publimg=models.CharField(max_length=250,blank=True,verbose_name="Enlace con Publicidad Mega 1")
         enlace_publimg2=models.CharField(max_length=250,blank=True,verbose_name="Enlace con Publicidad Mega 2")
         enlace_publimg3=models.CharField(max_length=250,blank=True,verbose_name="Enlace con Publicidad Mega 3")
-        categoria_pro=models.ManyToManyField(cate_Jueg,verbose_name="Categoria Producto",null=True)
-        slug=models.SlugField(null=True,blank=True)
+        categoria_pro=models.ManyToManyField(cate_Jueg,verbose_name="Categoria Producto")
+        slug=models.SlugField()
         imagen=models.ImageField()
         imagen2=models.ImageField()
         imagen3=models.ImageField()
